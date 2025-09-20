@@ -1,0 +1,20 @@
+scrape_configs:
+  - job_name: "fortigate"
+    metrics_path: /probe
+    scheme: http
+    params:
+      token: ["fortigate-api-token"]
+    static_configs:
+      - targets: ["https://fortigate-ip-address"]
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: "grafana-node-ip:9710"
+
+  - job_name: "fortigate_exporter"
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["grafana-node-ip:9710"]
