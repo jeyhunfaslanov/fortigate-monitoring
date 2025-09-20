@@ -1,0 +1,16 @@
+[Unit]
+Description=FortiGate Exporter
+After=network.target
+
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/opt/fortigate_exporter/fortigate_exporter \
+  -auth-file /etc/fortigate/fortigate-key.yaml \
+  -listen=:9710 -insecure
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
