@@ -1,0 +1,11 @@
+"https://[Add your fortigate IP address]": 
+  token: "[Generated fortigate API token]"
+  tls:
+    insecure_skip_verify: true
+
+  # Optionally, limit collection to specific probes:
+  # probes:
+  #   include:
+  #     - System
+  #     - System/Interface
+  #     - VPN
